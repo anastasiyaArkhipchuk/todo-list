@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Todolist} from "./Todolist";
+
+export type TaskType = {
+    id: number;
+    title: string;
+    isDone: boolean;
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [task, setState] = React.useState<TaskType[]>(
+        [{id: 1, title: 'Wash dishes', isDone: true},
+        {id: 2, title: 'Wash clothes', isDone: true},
+        {id: 3, title: 'Iron clothes', isDone: true}]
+    );
+
+    return (
+        <div>
+            <Todolist
+                title={"Home"}
+                task={task}
+            />
+        </div>
+    );
 }
 
 export default App;
